@@ -1,0 +1,2618 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<script>
+  try {
+    var url = new URL(window.location.href);
+    var override = url.searchParams.get('theme');
+    var saved = localStorage.getItem('brandlete-theme');
+    document.documentElement.setAttribute('data-theme', override || saved || 'dark');
+  } catch (e) {}
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Brandlete</title>
+<meta name="description" content="Athlete development, structured. AI-native, human-first platform for athletes, coaches, parents, and program directors." />
+<meta property="og:title" content="Brandlete" />
+<meta property="og:description" content="Athlete development, structured." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://brandlete.com" />
+<meta property="og:image" content="https://brandlete.com/img/og-card.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Brandlete — athlete development, structured." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Brandlete" />
+<meta name="twitter:description" content="Athlete development, structured." />
+<meta name="twitter:image" content="https://brandlete.com/img/og-card.png" />
+<link rel="canonical" href="https://brandlete.com" />
+<link rel="icon" type="image/png" href="img/brandlete-favicon.png" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-29N1GMQ3NE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-29N1GMQ3NE');
+  try {
+    var gaHealthKey = 'ga_health_ping_sent';
+    if (!sessionStorage.getItem(gaHealthKey)) {
+      var gaDebug = window.location.search.indexOf('ga_debug=1') !== -1;
+      gtag('event', 'ga_health_ping', {
+        event_category: 'observability',
+        event_label: 'frontend_boot',
+        non_interaction: true,
+        debug_mode: gaDebug
+      });
+      sessionStorage.setItem(gaHealthKey, '1');
+    }
+  } catch (err) {}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f6f8fc;
+    --bg-2: #ffffff;
+    --card: #ffffff;
+    --card-2: #f1f4fa;
+    --rail: #ffffff;
+    --rail-border: #e3e8f1;
+    --border: #e3e8f1;
+    --border-strong: #cdd5e3;
+    --ink: #0b1224;
+    --ink-2: #3c4a66;
+    --ink-3: #6b7891;
+    --ink-soft: #94a0b8;
+    --brand: #2196f3;
+    --brand-2: #00CCFF;
+    --brand-deep: #1573c4;
+    --brand-soft: rgba(33,150,243,0.10);
+    --accent-cyan: #00CCFF;
+    --success: #16a34a;
+    --warn: #f59e0b;
+    --danger: #e23b3b;
+    --hero-grad: linear-gradient(135deg, #2196f3 0%, #1f7ad6 55%, #1c5ba3 100%);
+    --card-grad: linear-gradient(180deg, #ffffff 0%, #f6f8fc 100%);
+    --shadow-card: 0 1px 0 rgba(11,18,36,0.04), 0 6px 24px -12px rgba(11,18,36,0.10);
+    --maxw: 1320px;
+    color-scheme: light;
+  }
+
+  [data-theme="dark"] {
+    --bg: #060912;
+    --bg-2: #0a0f1f;
+    --card: #0f1530;
+    --card-2: #131a36;
+    --rail: #080d1c;
+    --rail-border: #1a2244;
+    --border: #1c2444;
+    --border-strong: #2a3360;
+    --ink: #f1f5fb;
+    --ink-2: #c1cae0;
+    --ink-3: #8d99b6;
+    --ink-soft: #6b7794;
+    --brand: #4d9eff;
+    --brand-2: #00CCFF;
+    --brand-deep: #2563eb;
+    --brand-soft: rgba(77,158,255,0.14);
+    --accent-cyan: #00CCFF;
+    --success: #22c55e;
+    --warn: #f59e0b;
+    --danger: #ef4444;
+    --hero-grad: linear-gradient(135deg, #1a2c5c 0%, #14224a 55%, #0b1530 100%);
+    --card-grad: linear-gradient(180deg, #131a36 0%, #0e1430 100%);
+    --shadow-card: 0 1px 0 rgba(255,255,255,0.02), 0 12px 36px -16px rgba(0,0,0,0.6);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  html, body { transition: background 0.25s ease, color 0.25s ease; }
+  a { color: inherit; text-decoration: none; }
+  p { margin: 0; }
+  h1, h2, h3, h4 { margin: 0; letter-spacing: -0.02em; line-height: 1.1; }
+  h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 700; }
+  h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 700; }
+  h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; }
+
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+
+  .app {
+    display: grid;
+    grid-template-columns: 248px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+  .app > * { min-width: 0; }
+  @media (max-width: 920px) { .app { grid-template-columns: 1fr; } }
+
+  .rail {
+    background: var(--rail);
+    border-right: 1px solid var(--rail-border);
+    padding: 22px 18px 28px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mobile-topbar { display: none; }
+  .nav-backdrop { display: none; }
+  @media (max-width: 920px) {
+    .mobile-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 16px;
+      background: var(--rail);
+      border-bottom: 1px solid var(--rail-border);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+    .mobile-topbar .mt-logo { display: flex; align-items: center; }
+    .mobile-topbar .mt-logo img { height: 32px; width: auto; display: block; }
+    .mobile-topbar .mt-logo .brand-logo-dark { display: none; }
+    [data-theme="dark"] .mobile-topbar .mt-logo .brand-logo-light { display: none; }
+    [data-theme="dark"] .mobile-topbar .mt-logo .brand-logo-dark { display: block; }
+    .mobile-topbar .mt-right { display: flex; align-items: center; gap: 8px; }
+    .mobile-topbar .mt-cta {
+      background: #00CCFF; color: #0b1224; border: 1px solid #00CCFF;
+      padding: 8px 14px; border-radius: 8px; font-weight: 600; font-size: 0.86rem;
+    }
+    .mobile-topbar .icon-btn { width: 36px; height: 36px; }
+    .hamburger {
+      width: 40px; height: 40px;
+      display: grid; place-items: center;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--ink);
+      cursor: pointer;
+      padding: 0;
+    }
+    .hamburger svg { width: 20px; height: 20px; }
+    .rail {
+      position: fixed;
+      top: 0; left: 0;
+      width: 280px;
+      max-width: 86vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 50;
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      box-shadow: 0 0 32px rgba(0,0,0,0.18);
+      border-right: 1px solid var(--rail-border);
+      border-bottom: none;
+    }
+    body.nav-open .rail { transform: translateX(0); }
+    .nav-backdrop {
+      display: block;
+      position: fixed; inset: 0;
+      background: rgba(8,12,28,0.5);
+      z-index: 40;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease;
+    }
+    body.nav-open .nav-backdrop {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.nav-open { overflow: hidden; }
+  }
+
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 4px 14px;
+    border-bottom: 1px solid var(--border);
+    color: inherit;
+    text-decoration: none;
+  }
+  .brand-mark .brand-logo {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    display: block;
+  }
+  .brand-mark .brand-logo-dark { display: none; }
+  [data-theme="dark"] .brand-mark .brand-logo-light { display: none; }
+  [data-theme="dark"] .brand-mark .brand-logo-dark { display: block; }
+  @media (max-width: 920px) {
+    .brand-mark { border-bottom: none; padding: 0; flex-shrink: 0; }
+    .brand-mark .brand-logo { max-width: 140px; }
+  }
+
+  .rail-section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    padding: 0 6px;
+    margin-top: 8px;
+  }
+  .rail-nav { display: flex; flex-direction: column; gap: 2px; }
+  .rail-nav a {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 0.94rem;
+    transition: background 0.15s, color 0.15s;
+  }
+  .rail-nav a:hover { background: var(--card-2); color: var(--ink); }
+  .rail-nav a.active {
+    background: var(--brand-soft);
+    color: var(--brand);
+  }
+  .rail-nav a .ico {
+    width: 18px; height: 18px;
+    display: grid; place-items: center;
+    color: currentColor;
+    flex-shrink: 0;
+  }
+  .rail-nav a .sub {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--ink-2);
+    font-weight: 600;
+    margin-top: 1px;
+  }
+  .rail-nav a.active .sub { color: var(--brand-deep); }
+  [data-theme="dark"] .rail-nav a.active .sub { color: var(--brand-2); }
+  .rail-foot { margin-top: auto; display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .rail-foot .needhelp {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--ink-3);
+    font-size: 0.86rem;
+  }
+  .rail-foot .needhelp:hover { background: var(--card-2); color: var(--ink); }
+
+  .content {
+    padding: 28px clamp(20px, 3.5vw, 44px) 56px;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .topstrip {
+    display: flex; flex-direction: column; align-items: stretch;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .topstrip .actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+  .topstrip .greet {
+    display: flex; flex-direction: column; gap: 4px; min-width: 0;
+    align-items: center; text-align: center;
+  }
+  .topstrip .greet h2 { font-size: clamp(1.6rem, 3.4vw, 2.6rem); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; white-space: nowrap; text-align: center; }
+  .greet-role { display: inline-block; color: var(--accent-cyan); font-weight: 700; }
+  .greet-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.95em;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    background: var(--accent-cyan);
+    animation: greet-blink 1s steps(1, end) infinite;
+  }
+  @keyframes greet-blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .greet-cursor { animation: none; } }
+  @media (max-width: 720px) {
+    .topstrip .greet { align-items: center; text-align: center; }
+    .topstrip .greet h2 {
+      font-size: clamp(1.5rem, 6.2vw, 2rem);
+      line-height: 1.2;
+      white-space: normal;
+      text-wrap: balance;
+      padding: 0 12px;
+    }
+    .greet-role { font-size: 1em; }
+    .greet-cursor { height: 0.85em; }
+    .topstrip .greet h2 .greet-tail { display: block; }
+  }
+  @media (max-width: 920px) {
+    .topstrip { margin-bottom: 16px; gap: 8px; }
+    .topstrip .actions { display: none; }
+    .content { padding-top: 10px; padding-bottom: 40px; }
+  }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--ink-2);
+    font-size: 0.84rem;
+    font-weight: 500;
+  }
+  .chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px var(--brand-soft); }
+  @media (max-width: 720px) { .chip { display: none; } }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 11px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--brand);
+    background: var(--brand);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.05s;
+  }
+  .btn:hover { background: var(--brand-deep); border-color: var(--brand-deep); }
+  .btn:active { transform: translateY(1px); }
+  .btn::after { content: "→"; font-size: 1rem; line-height: 1; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--border-strong);
+  }
+  .btn-ghost:hover { background: var(--card-2); border-color: var(--border-strong); color: var(--ink); }
+  .btn-light {
+    background: #ffffff;
+    color: #0b1224;
+    border-color: #ffffff;
+  }
+  .btn-light:hover { background: #eaf3ff; border-color: #eaf3ff; }
+  .btn-cyan {
+    background: #00CCFF;
+    color: #0b1224;
+    border-color: #00CCFF;
+  }
+  .btn-cyan:hover { background: #00b8e6; border-color: #00b8e6; color: #0b1224; }
+  .btn-partner {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid #00CCFF;
+  }
+  .btn-partner:hover { background: rgba(0,204,255,0.10); border-color: #00CCFF; color: var(--ink); }
+  .btn-partner::after { content: "↓"; }
+
+  .icon-btn {
+    width: 38px; height: 38px;
+    display: grid; place-items: center;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    padding: 0;
+  }
+  .icon-btn:hover { background: var(--card-2); color: var(--ink); }
+  .icon-btn .icon-light { display: none; }
+  .icon-btn .icon-dark { display: inline; }
+  [data-theme="dark"] .icon-btn .icon-light { display: inline; }
+  [data-theme="dark"] .icon-btn .icon-dark { display: none; }
+
+  .hero-card {
+    position: relative;
+    border-radius: 18px;
+    padding: clamp(40px, 6vw, 72px) clamp(24px, 4vw, 56px);
+    overflow: hidden;
+    background-color: #060912;
+    background-image: url('img/hero-athletes.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #f5f9ff;
+    scroll-margin-top: 24px;
+    box-shadow: var(--shadow-card);
+    isolation: isolate;
+    text-align: center;
+  }
+  .hero-card::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 55%, rgba(6,9,18,0.30) 0%, rgba(6,9,18,0.78) 75%),
+      linear-gradient(180deg, rgba(6,9,18,0.55) 0%, rgba(6,9,18,0.25) 35%, rgba(6,9,18,0.85) 100%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  @media (max-width: 720px) {
+    .hero-card {
+      padding: clamp(22px, 5vw, 36px) clamp(18px, 5vw, 28px);
+      background-image: url('img/hero-athletes-mobile.jpg');
+      background-position: center center;
+      scroll-margin-top: 72px;
+    }
+    .hero-card .eyebrow { margin-bottom: 10px; }
+    .hero-card .lede { margin-top: 12px; }
+    .hero-card .cta-row { margin-top: 18px; }
+    .hero-card .hero-roles { margin-top: 18px; }
+    .hero-card::before {
+      background:
+        linear-gradient(180deg, rgba(6,9,18,0.62) 0%, rgba(6,9,18,0.55) 50%, rgba(6,9,18,0.62) 100%);
+    }
+    .hero-card .hero-roles { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; max-width: 360px; }
+    .hero-card .cta-row { width: 100%; }
+    .hero-card .cta-row .btn { flex: 1 1 auto; min-height: 48px; justify-content: center; }
+  }
+  .hero-card .eyebrow {
+    color: rgba(245,249,255,0.78);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: 18px;
+  }
+  .hero-card .eyebrow .pulse { width: 10px; height: 10px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 4px rgba(74,222,128,0.18); animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 4px rgba(74,222,128,0.18); } 50% { box-shadow: 0 0 0 8px rgba(74,222,128,0.03); } }
+  .hero-card h1 { color: #ffffff; max-width: 24ch; margin: 0 auto; text-wrap: balance; text-shadow: 0 2px 18px rgba(0,0,0,0.55); }
+  .hero-card h1 .accent { color: var(--accent-cyan); font-weight: 800; }
+  .hero-card .lede {
+    margin: 18px auto 0;
+    color: rgba(245,249,255,0.92);
+    font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+    max-width: 56ch;
+    line-height: 1.55;
+    text-shadow: 0 1px 12px rgba(0,0,0,0.5);
+  }
+  .hero-card .cta-row {
+    display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; justify-content: center;
+  }
+  .hero-card .hero-roles {
+    margin: 28px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 180px));
+    gap: 10px;
+    justify-content: center;
+  }
+  @media (max-width: 720px) { .hero-card .hero-roles { grid-template-columns: repeat(2, 1fr); } }
+  .hero-card .hero-role {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.04);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color .15s, background-color .15s, transform .15s;
+  }
+  .hero-card .hero-role:hover {
+    border-color: rgba(0,204,255,0.55);
+    background: rgba(0,204,255,0.08);
+    transform: translateY(-1px);
+  }
+  .hero-card .hero-role:focus-visible {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 2px;
+  }
+  .hero-card .hero-role .role-tag {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #00CCFF;
+    margin-bottom: 4px;
+  }
+  .hero-card .hero-role .role-name {
+    display: block;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 1.02rem;
+    letter-spacing: 0.01em;
+  }
+  .hero-card .ghost-on-dark {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.22);
+    color: #ffffff;
+  }
+  .hero-card .ghost-on-dark:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.36);
+  }
+  .hero-card .progress-row {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 14px;
+  }
+  @media (max-width: 640px) { .hero-card .progress-row { grid-template-columns: 1fr; } }
+  .hero-card .progress-row .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,249,255,0.74);
+  }
+  .hero-card .progress-row .pct { color: var(--accent-cyan); font-weight: 600; font-size: 0.92rem; font-family: 'JetBrains Mono', monospace; }
+  .hero-card .progress-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.14);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .hero-card .progress-bar > i {
+    display: block; height: 100%;
+    width: 73%;
+    background: linear-gradient(90deg, var(--accent-cyan), #6ed4ff);
+    border-radius: 999px;
+  }
+  .hero-card .micro {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(245,249,255,0.6);
+    align-self: end;
+  }
+
+  .cohort-strip {
+    margin: 22px 4px 28px;
+    padding: 16px 6px 0;
+    border-top: 1px solid var(--border);
+  }
+  .cohort-label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #00CCFF;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .cohort-bubbles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .cohort-mark {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,204,255,0.45);
+    background: rgba(0,204,255,0.08);
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .cohort-mark:hover, .cohort-mark:focus-visible {
+    background: rgba(0,204,255,0.18);
+    border-color: rgba(0,204,255,0.75);
+    transform: translateY(-1px);
+    outline: none;
+  }
+  @media (max-width: 640px) {
+    .cohort-bubbles { gap: 8px; }
+    .cohort-mark { font-size: 0.84rem; padding: 6px 12px; }
+  }
+
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 22px;
+  }
+  @media (max-width: 880px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+  .kpi {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 18px 16px;
+    display: flex; flex-direction: column; gap: 10px;
+    box-shadow: var(--shadow-card);
+  }
+  .kpi .kpi-head { display: flex; align-items: center; gap: 10px; color: var(--brand); }
+  .kpi .kpi-head .ico {
+    width: 32px; height: 32px;
+    border-radius: 9px;
+    background: var(--brand-soft);
+    display: grid; place-items: center;
+  }
+  .kpi .kpi-head .name { font-size: 0.78rem; font-weight: 600; color: var(--ink-2); letter-spacing: 0.02em; }
+  .kpi .num { font-size: 1.85rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+  .kpi .sub { font-size: 0.8rem; color: var(--ink-3); }
+
+  .section {
+    padding: 64px 0;
+    position: relative;
+    scroll-margin-top: 24px;
+  }
+  @media (max-width: 920px) {
+    .section { scroll-margin-top: 72px; }
+  }
+  .section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 2px;
+    background: #00CCFF;
+    border-radius: 1px;
+  }
+  .section-head {
+    display: flex; align-items: end; justify-content: space-between; gap: 18px;
+    margin-bottom: 18px;
+  }
+  .section-head .left .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #00CCFF;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .section-head h2 { color: var(--ink); }
+  .section-head .left { position: relative; }
+  .section-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; margin-left: 8px;
+    border: none; background: none; cursor: pointer; padding: 0;
+    color: var(--ink-soft); border-radius: 5px;
+    opacity: 0; transition: opacity 0.15s, color 0.15s, background 0.15s;
+    vertical-align: middle; position: relative; top: -2px;
+  }
+  .section-link svg { width: 15px; height: 15px; }
+  .section-head .left:hover .section-link,
+  .power25:hover .section-link,
+  .section-link:focus-visible { opacity: 1; }
+  .section-link:hover { color: var(--accent-cyan); background: rgba(0,204,255,0.1); }
+  .section-link[data-copied]::after {
+    content: 'Copied!';
+    position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+    background: var(--accent-cyan); color: #0a1430;
+    font-size: 0.72rem; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+    padding: 3px 8px; border-radius: 4px; white-space: nowrap; pointer-events: none;
+  }
+  .section-head .right { color: var(--brand); font-size: 0.88rem; font-weight: 600; flex-shrink: 0; }
+  .section-head .contact-cta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; text-align: right; }
+  .section-head .contact-cta a { color: var(--brand); }
+  .section-head .contact-cta .cta-note { margin: 0; font-size: 0.78rem; font-weight: 500; }
+  .section-head .contact-cta .cta-note a { color: var(--ink-soft); text-decoration: underline; }
+  .section-head .contact-cta .cta-note a:hover { color: var(--brand); }
+  @media (max-width: 760px) {
+    .section-head .contact-cta { align-items: flex-start; text-align: left; }
+  }
+  @media (max-width: 720px) {
+    .section-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .section-head .left { width: 100%; }
+  }
+
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  @media (max-width: 1180px) { .grid-5 { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 1100px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 980px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } .grid-5 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .grid-3, .grid-2, .grid-4, .grid-5 { grid-template-columns: 1fr; } }
+
+  .section-lede {
+    color: var(--ink-3);
+    font-size: 1.02rem;
+    line-height: 1.6;
+    max-width: 74ch;
+    margin: 4px 0 22px;
+  }
+  .ai-supporting {
+    margin-top: 28px;
+    padding: 20px 24px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .ai-supporting .ai-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--brand-2);
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .ai-supporting .ai-tag::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--brand-2);
+    box-shadow: 0 0 0 4px rgba(0,204,255,0.18);
+  }
+  .ai-supporting h3 { margin: 0; font-size: 1.08rem; }
+  .ai-supporting p { margin: 0; color: var(--ink-3); font-size: 0.95rem; line-height: 1.55; }
+
+  .platform-screens { margin-top: 28px; }
+
+  .playbook-tile {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--card);
+    transition: border-color 0.2s, transform 0.15s;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  .playbook-tile:hover { border-color: var(--brand-2); transform: translateY(-1px); }
+  .playbook-tile h4 { font-size: 0.98rem; font-weight: 600; color: var(--ink); margin: 0; }
+  .playbook-tile .pb-ico {
+    width: 30px; height: 30px; border-radius: 9px;
+    background: rgba(0,204,255,0.10); color: var(--brand-2);
+    display: grid; place-items: center; flex: 0 0 auto;
+  }
+
+  .playbook-details {
+    margin-top: 22px;
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+    display: flex; flex-direction: column;
+  }
+  .playbook-detail {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 12px 4px;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 96px;
+  }
+  .playbook-detail:last-child { border-bottom: none; }
+  .playbook-detail:target { background: rgba(0,204,255,0.06); border-radius: 8px; }
+  .playbook-detail .pb-ico {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: rgba(0,204,255,0.10); color: var(--brand-2);
+    display: grid; place-items: center; flex: 0 0 auto;
+    margin-top: 1px;
+  }
+  .playbook-detail .pd-text { display: flex; flex-direction: column; gap: 2px; }
+  .playbook-detail h4 { font-size: 0.98rem; font-weight: 600; color: var(--ink); margin: 0; }
+  .playbook-detail p { font-size: 0.92rem; color: var(--ink-3); margin: 0; line-height: 1.5; }
+
+  .insight-card {
+    padding: 22px 22px 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card);
+    display: flex; flex-direction: column; gap: 14px;
+    box-shadow: var(--shadow-card);
+  }
+  .insight-card blockquote {
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: var(--ink);
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic;
+    position: relative;
+    padding-left: 18px;
+  }
+  .insight-card blockquote::before {
+    content: '"';
+    position: absolute; left: -2px; top: -4px;
+    font-size: 2rem;
+    color: var(--brand-2);
+    line-height: 1;
+  }
+  .insight-card .who-tag {
+    font-size: 0.78rem; color: var(--ink-3);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+
+  .program-card {
+    padding: 30px 32px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--card);
+    display: flex; flex-direction: column; gap: 14px;
+    max-width: 760px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-card);
+  }
+  .program-card h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); margin: 0; }
+  .program-card .price-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    align-self: flex-start;
+    background: rgba(0,204,255,0.10);
+    color: var(--brand-2);
+    border: 1px solid rgba(0,204,255,0.30);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .pricing-secondary { margin-top: 36px; }
+  .pricing-secondary .secondary-eyebrow {
+    color: var(--ink-3);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: var(--shadow-card);
+    display: flex; flex-direction: column; gap: 10px;
+    position: relative;
+    scroll-margin-top: 24px;
+  }
+  @media (max-width: 920px) {
+    .card { scroll-margin-top: 80px; }
+  }
+  .card .ico-tag {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--brand-soft);
+    color: var(--brand);
+    display: grid; place-items: center;
+    margin-bottom: 6px;
+  }
+  .card h3 { color: var(--ink); }
+  .card .lede { color: var(--ink-3); font-size: 0.94rem; line-height: 1.55; }
+  .card .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand);
+    background: var(--brand-soft);
+    padding: 4px 10px;
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+  .compare-wrap { margin-top: 22px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .compare {
+    width: 100%; border-collapse: separate; border-spacing: 0; min-width: 580px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    box-shadow: var(--shadow-card); overflow: hidden;
+  }
+  .compare th, .compare td { padding: 14px 18px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
+  .compare tbody tr:last-child td { border-bottom: none; }
+  .compare thead th {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--ink-3); font-weight: 600;
+  }
+  .compare tbody td { color: var(--ink-2); font-size: 0.95rem; }
+  .compare .cap { color: var(--ink); font-weight: 600; }
+  .compare th.center, .compare td.center { text-align: center; }
+  .compare .col-us { background: var(--brand-soft); }
+  .compare thead th.col-us { color: var(--brand); }
+  .compare .mark { display: inline-flex; align-items: center; justify-content: center; }
+  .compare .mark svg { width: 20px; height: 20px; }
+  .compare .yes { color: var(--brand-2); }
+  .compare .no { color: var(--ink-3); opacity: 0.6; }
+  .compare .limited { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+  .card .list {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .card .list li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.9rem;
+    color: var(--ink-2);
+  }
+  .card .list li::before {
+    content: "✓";
+    color: var(--brand);
+    font-weight: 700;
+    width: 16px; text-align: center;
+  }
+
+  .step .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brand);
+    margin-bottom: 14px;
+  }
+  .step .num span { font-size: 1.1rem; }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 980px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .gallery { grid-template-columns: 1fr; } }
+  .gallery figure {
+    position: relative;
+    margin: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--card);
+    box-shadow: var(--shadow-card);
+  }
+  .gallery figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .gallery figure:hover img { transform: scale(1.03); }
+  .gallery figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 14px 16px;
+    background: linear-gradient(to top, rgba(6,9,18,0.78) 0%, rgba(6,9,18,0.18) 75%, transparent 100%);
+    color: #f5f9ff;
+    display: flex; justify-content: space-between; align-items: end;
+    gap: 10px;
+  }
+  .gallery figcaption .level-name {
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .gallery figcaption .level-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+  }
+
+  .athlete-band {
+    position: relative;
+    margin: 56px 0;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--card);
+    box-shadow: var(--shadow-card);
+  }
+  .athlete-band img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .athlete-band:hover img { transform: scale(1.03); }
+  @media (max-width: 760px) {
+    .athlete-band img { aspect-ratio: 4 / 3; }
+    .athlete-band { margin: 40px 0; }
+  }
+  .athlete-band figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 22px 28px;
+    background: linear-gradient(to top, rgba(6,9,18,0.85) 0%, rgba(6,9,18,0.25) 70%, transparent 100%);
+    color: #f5f9ff;
+    display: flex; justify-content: space-between; align-items: end;
+    gap: 14px;
+  }
+  .athlete-band figcaption .level-name {
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+  }
+  .athlete-band figcaption .level-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+  }
+
+  .product-twoup {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 880px) { .product-twoup { grid-template-columns: 1fr; } }
+  .product-twoup figure {
+    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #0a1024;
+    box-shadow: var(--shadow-card);
+    display: flex; flex-direction: column;
+  }
+  .product-twoup figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .product-img-wrap {
+    position: relative;
+    display: block;
+  }
+  .product-img-wrap .pin {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+    z-index: 2;
+    cursor: pointer;
+  }
+  .product-img-wrap .pin:focus { outline: none; }
+  .product-img-wrap .pin:focus-visible i { box-shadow: 0 0 0 4px rgba(56,189,248,0.35), 0 0 0 6px rgba(0,204,255,0.6); }
+  .product-img-wrap .pin i {
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.78rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 0 4px rgba(56,189,248,0.18), 0 4px 12px rgba(2,8,23,0.35);
+  }
+  .product-img-wrap .pin.active i { background: var(--accent-cyan); color: #0b132a; }
+  .product-img-wrap .pin em {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 8px);
+    transform: translateY(-50%) translateX(-4px);
+    font-style: normal;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #0b132a;
+    background: rgba(255,255,255,0.96);
+    padding: 4px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(2,8,23,0.18);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s, transform 0.18s;
+  }
+  .product-img-wrap .pin.pin-left em {
+    left: auto;
+    right: calc(100% + 8px);
+    transform: translateY(-50%) translateX(4px);
+  }
+  .product-img-wrap .pin:hover em,
+  .product-img-wrap .pin.active em,
+  .product-img-wrap:hover .pin em { opacity: 1; transform: translateY(-50%) translateX(0); }
+  @media (max-width: 720px) {
+    .product-img-wrap .pin { width: 30px; height: 30px; }
+    .product-img-wrap .pin i { width: 30px; height: 30px; font-size: 0.86rem; }
+    .product-img-wrap .pin em {
+      top: calc(100% + 10px);
+      left: 50%;
+      right: auto;
+      transform: translateX(0) translateY(-4px);
+      max-width: min(220px, 60vw);
+      white-space: normal;
+      text-align: left;
+      border-radius: 10px;
+      padding: 6px 10px;
+      line-height: 1.25;
+      z-index: 3;
+    }
+    .product-img-wrap .pin.pin-left em {
+      left: auto;
+      right: 50%;
+      transform: translateX(0) translateY(-4px);
+      text-align: right;
+    }
+    .product-img-wrap:hover .pin em { opacity: 0; }
+    .product-img-wrap .pin.active em { opacity: 1; transform: translateX(0) translateY(0); }
+  }
+  .product-twoup figcaption {
+    padding: 14px 18px;
+    color: #e7ecf7;
+    background: #0a1024;
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 10px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .product-twoup figcaption .surface-name {
+    font-weight: 600;
+    font-size: 0.98rem;
+    letter-spacing: -0.01em;
+  }
+  .product-twoup figcaption .surface-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+  }
+
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 1100px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; } }
+  .team-col {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: var(--shadow-card);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .team-portrait {
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    background: var(--brand-soft);
+    color: var(--brand);
+    border: 2px solid var(--border);
+    display: grid; place-items: center;
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    overflow: hidden;
+  }
+  .team-portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .team-col .role-row {
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap;
+  }
+  .team-col .role-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand);
+    background: var(--brand-soft);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .team-col .role-mini { color: var(--ink-3); font-size: 0.82rem; }
+  .team-col h3 { font-size: 1.35rem; font-weight: 600; }
+  .team-col p { color: var(--ink-3); font-size: 0.92rem; line-height: 1.55; }
+  .team-link {
+    font-size: 0.85rem;
+    color: var(--brand);
+    font-weight: 600;
+    align-self: flex-start;
+  }
+  .team-link:hover { color: var(--brand-deep); text-decoration: underline; }
+
+  .quote {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: var(--shadow-card);
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .quote blockquote {
+    margin: 0;
+    color: var(--ink);
+    font-size: 1.02rem;
+    line-height: 1.55;
+  }
+  .quote .who { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--border); padding-top: 14px; }
+  .quote .who .avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--brand-soft);
+    color: var(--brand);
+    display: grid; place-items: center;
+    font-weight: 700;
+    font-size: 0.82rem;
+  }
+  .quote .who .meta .nm { font-weight: 600; font-size: 0.92rem; }
+  .quote .who .meta .role { color: var(--ink-3); font-size: 0.8rem; }
+
+  .tier {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .tier.featured {
+    border-color: var(--brand);
+    box-shadow: 0 1px 0 rgba(11,18,36,0.04), 0 18px 42px -16px var(--brand-soft);
+  }
+  .tier .tier-head { display: flex; justify-content: space-between; align-items: center; }
+  .tier .tier-name { font-weight: 600; font-size: 1.15rem; }
+  .tier .price-num {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .tier .price-num small { font-size: 0.85rem; color: var(--ink-3); font-weight: 500; }
+  .tier .list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .tier .list li { display: flex; align-items: center; gap: 10px; font-size: 0.92rem; color: var(--ink-2); }
+  .tier .list li::before { content: "✓"; color: var(--brand); font-weight: 700; }
+  .tier .badge.muted { color: var(--ink-3); background: var(--card-2); }
+
+  .billing-toggle {
+    display: inline-flex;
+    background: var(--card-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px;
+    margin-bottom: 18px;
+    gap: 2px;
+  }
+  .billing-opt {
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--ink-3);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .billing-opt:hover { color: var(--ink); }
+  .billing-opt.active {
+    background: var(--brand);
+    color: #ffffff;
+  }
+  .tier-solo {
+    display: grid;
+    grid-template-columns: minmax(0, 480px);
+    justify-content: start;
+  }
+  @media (max-width: 620px) { .tier-solo { grid-template-columns: 1fr; } }
+  .tier .price-num .price-amount {
+    color: var(--brand);
+    font-weight: 800;
+  }
+  .tier .price-sub { color: var(--ink-3); font-size: 0.86rem; margin: -6px 0 4px; }
+  .pricing-foot {
+    margin-top: 18px;
+    font-size: 0.92rem;
+    color: var(--ink-3);
+  }
+  .pricing-foot a { color: var(--brand); font-weight: 600; }
+  .pricing-foot a:hover { color: var(--brand-deep); }
+
+  .contact-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 28px;
+    align-items: start;
+  }
+  @media (max-width: 880px) { .contact-card { grid-template-columns: 1fr; } }
+  .contact-card .lead h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; color: var(--ink); }
+  .contact-card .lead p { color: var(--ink-3); font-size: 0.96rem; line-height: 1.55; }
+  .contact-card .lead .shoe {
+    width: 56px; height: auto;
+    margin-bottom: 16px;
+    opacity: 0.95;
+    filter: drop-shadow(0 0 0.5px var(--brand));
+  }
+  .contact-form { display: grid; gap: 14px; }
+  .contact-row { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 540px) { .contact-row { grid-template-columns: 1fr; } }
+  .contact-field { display: flex; flex-direction: column; gap: 6px; }
+  .contact-field label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+  .contact-field input,
+  .contact-field select,
+  .contact-field textarea {
+    width: 100%;
+    min-width: 0;
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 11px 13px;
+    border-radius: 10px;
+    border: 1px solid var(--border-strong);
+    background: var(--bg-2);
+    color: var(--ink);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .contact-field input::placeholder,
+  .contact-field textarea::placeholder { color: var(--ink-soft); }
+  .contact-field input:focus,
+  .contact-field select:focus,
+  .contact-field textarea:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px var(--brand-soft);
+  }
+  .contact-field textarea { resize: vertical; min-height: 110px; }
+  .contact-form .btn { align-self: flex-start; }
+  .contact-card .lead .book-direct { margin-top: 14px; margin-bottom: 4px; }
+  .contact-card .lead-divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 16px 0 12px;
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .contact-card .lead-divider::before,
+  .contact-card .lead-divider::after {
+    content: ""; flex: 1; height: 1px; background: var(--border);
+  }
+  .contact-card .lead-form-hint { color: var(--ink-3); font-size: 0.92rem; line-height: 1.5; }
+  .contact-card .lead-form-hint a { color: var(--brand); font-weight: 600; }
+  .contact-status {
+    font-size: 0.88rem;
+    color: var(--success);
+    min-height: 1.2em;
+  }
+  .contact-status.error { color: var(--danger); }
+
+  #contact { scroll-margin-top: 24px; }
+  @media (max-width: 920px) { #contact { scroll-margin-top: 72px; } }
+
+  .schedule-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 18px;
+  }
+  .schedule-block h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .schedule-block .schedule-lede {
+    color: var(--ink-3);
+    font-size: 0.96rem;
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+  .schedule-embed {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--border);
+  }
+  .schedule-embed iframe {
+    width: 100%;
+    height: 700px;
+    border: 0;
+    display: block;
+  }
+  [data-theme="dark"] .schedule-embed {
+    background: #e8ecf3;
+    border-radius: 14px;
+    padding: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  [data-theme="dark"] .schedule-embed iframe {
+    filter: brightness(0.86) saturate(0.94);
+    border-radius: 10px;
+  }
+  @media (max-width: 640px) {
+    .schedule-embed iframe { height: 760px; }
+  }
+  .schedule-fallback {
+    margin-top: 12px;
+    color: var(--ink-3);
+    font-size: 0.88rem;
+  }
+  .schedule-fallback a { color: var(--brand); font-weight: 600; }
+
+  .cta-strip {
+    margin-top: 28px;
+    background: var(--card);
+    color: var(--ink);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px clamp(20px, 3vw, 28px);
+    display: grid;
+    grid-template-columns: 1.4fr auto;
+    gap: 18px;
+    align-items: center;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 760px) { .cta-strip { grid-template-columns: 1fr; } }
+  .cta-strip h2 { color: var(--ink); font-size: 1.05rem; font-weight: 600; max-width: none; position: relative; }
+  .cta-strip .lede { color: var(--ink-soft); margin-top: 2px; font-size: 0.88rem; position: relative; }
+  .cta-strip .ctas { display: flex; gap: 12px; flex-wrap: wrap; position: relative; justify-self: end; }
+  @media (max-width: 760px) { .cta-strip .ctas { justify-self: start; } }
+  .cta-strip .ghost-on-dark {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.22);
+    color: #ffffff;
+  }
+  .cta-strip .ghost-on-dark:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.36);
+  }
+
+  footer {
+    margin-top: 64px;
+    padding: 40px 0 0;
+    border-top: 1px solid var(--border);
+    color: var(--ink-3);
+    font-size: 0.88rem;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1.6fr 1fr;
+    gap: 48px;
+    padding-bottom: 32px;
+  }
+  @media (max-width: 880px) {
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+    .foot-brand { grid-column: 1 / -1; }
+    .foot-connect { grid-column: 1 / -1; }
+    .foot-connect .foot-cta { display: none !important; }
+  }
+  @media (max-width: 540px) {
+    .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+    .foot-nav { grid-template-columns: 1fr 1fr; gap: 24px; }
+  }
+  .foot-brand .foot-mark img { width: 140px; height: auto; display: block; margin-bottom: 16px; }
+  .foot-brand .foot-mark .foot-logo-dark { display: none; }
+  [data-theme="dark"] .foot-brand .foot-mark .foot-logo-light { display: none; }
+  [data-theme="dark"] .foot-brand .foot-mark .foot-logo-dark { display: block; }
+  .foot-brand .foot-tag {
+    color: var(--ink-2);
+    font-size: 0.96rem;
+    line-height: 1.5;
+    max-width: 28ch;
+    margin: 0 0 16px;
+  }
+  .foot-brand .foot-contact {
+    display: inline-block;
+    color: var(--ink-2);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    border-bottom: 1px solid var(--border-strong);
+    padding-bottom: 2px;
+  }
+  .foot-brand .foot-contact:hover { color: var(--brand); border-color: var(--brand); }
+  .foot-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .foot-nav h5,
+  .foot-connect h5 {
+    margin: 0 0 14px;
+    color: var(--ink-2);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .foot-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .foot-nav a { color: var(--ink-3); text-decoration: none; font-size: 0.9rem; }
+  .foot-nav a:hover { color: var(--brand); }
+  .foot-connect .foot-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: #00CCFF;
+    color: #0b1224;
+    font-weight: 600;
+    font-size: 0.88rem;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: background 0.15s;
+  }
+  .foot-connect .foot-cta:hover { background: #00b8e6; color: #0b1224; }
+  .foot-connect .foot-cta::after { content: "→"; font-size: 0.95rem; }
+  .foot-connect .socials { gap: 8px; }
+  .foot-legal-strip {
+    border-top: 1px solid var(--border);
+    padding: 18px 0 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+  }
+  .foot-legal-strip .foot-legal { display: flex; gap: 18px; align-items: center; }
+  .foot-legal-strip a { color: var(--ink-3); text-decoration: none; }
+  .foot-legal-strip a:hover { color: var(--ink); text-decoration: underline; }
+  .foot-credit {
+    text-align: center;
+    padding: 0 0 18px;
+    color: var(--ink-3);
+    font-size: 0.7rem;
+    letter-spacing: 0.01em;
+  }
+  .foot-credit a { color: var(--ink-3); text-decoration: none; }
+  .foot-credit a:hover { color: var(--ink); text-decoration: underline; }
+
+  .power25 {
+    position: relative;
+    border-radius: 18px;
+    padding: 36px clamp(24px, 4vw, 48px);
+    background: linear-gradient(180deg, #0a1430 0%, #0b1a3c 100%);
+    color: #f5f9ff;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    isolation: isolate;
+    text-align: center;
+  }
+  .power25::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 88% 18%, rgba(56,189,248,0.22), transparent 55%),
+                radial-gradient(circle at 8% 92%, rgba(33,150,243,0.16), transparent 55%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .power25 .eyebrow {
+    color: var(--accent-cyan);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .power25 h2 { color: #ffffff; max-width: 22ch; margin-left: auto; margin-right: auto; font-size: clamp(1.7rem, 3vw, 2.4rem); }
+  .power25 h2 .accent { color: var(--accent-cyan); }
+  .power25 .lede {
+    margin: 14px auto 0;
+    color: rgba(245,249,255,0.82);
+    font-size: clamp(1rem, 1.3vw, 1.12rem);
+    max-width: 62ch;
+    line-height: 1.55;
+  }
+  .power25-stats {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 18px 40px;
+    padding: 18px clamp(18px, 3vw, 26px);
+    background: rgba(6,10,24,0.55);
+    border: 1px solid rgba(56,189,248,0.18);
+    border-radius: 14px;
+  }
+  .power25-stats .power25-pricing-note { margin: 0; }
+  .power25-pricing-note {
+    margin: 14px 0 0;
+    color: rgba(245,249,255,0.78);
+    font-size: 0.95rem;
+  }
+  .power25-pricing-note a { color: var(--accent-cyan); text-decoration: none; border-bottom: 1px solid rgba(0,204,255,0.4); }
+  .power25-pricing-note a:hover { border-bottom-color: var(--accent-cyan); }
+  .power25-stat .num {
+    color: var(--accent-cyan);
+    font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .power25-stat .num.white { color: #ffffff; }
+  .power25-stat .label {
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245,249,255,0.7);
+  }
+  .power25-who {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+  .power25-who ul { justify-content: center; }
+  .power25-who h3 {
+    margin: 0;
+    color: var(--accent-cyan);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .power25-who ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .power25-who ul li { display: flex; }
+  .power25-who ul li a {
+    padding: 6px 12px;
+    border: 1px solid rgba(56,189,248,0.32);
+    background: rgba(56,189,248,0.08);
+    border-radius: 999px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 0.86rem;
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .power25-who ul li a:hover, .power25-who ul li a:focus-visible {
+    background: rgba(56,189,248,0.2);
+    border-color: rgba(56,189,248,0.7);
+    transform: translateY(-1px);
+    outline: none;
+  }
+  .power25-benefits {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    text-align: left;
+  }
+  @media (max-width: 880px) { .power25-benefits { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .power25-benefits { grid-template-columns: 1fr; } }
+  .power25-benefit {
+    padding: 14px 16px 16px;
+    border-left: 2px solid var(--accent-cyan);
+    background: rgba(255,255,255,0.03);
+    border-radius: 0 10px 10px 0;
+  }
+  .power25-benefit h4 {
+    margin: 0 0 6px;
+    color: #ffffff;
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .power25-benefit p {
+    margin: 0;
+    color: rgba(245,249,255,0.72);
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+  .power25-cta {
+    margin-top: 22px;
+    padding: 16px clamp(18px, 3vw, 22px);
+    background: rgba(6,10,24,0.6);
+    border: 1px solid rgba(56,189,248,0.22);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    text-align: left;
+  }
+  .power25-cta .fineprint {
+    margin: 0;
+    color: rgba(245,249,255,0.72);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 44ch;
+  }
+  .power25-cta .ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+  .power25-cta .btn-light { background: var(--accent-cyan); border-color: var(--accent-cyan); color: #0a1430; }
+  .power25-cta .btn-light:hover { background: #79d6ff; border-color: #79d6ff; }
+
+  ::selection { background: var(--brand); color: #ffffff; }
+
+  svg.ico-svg { width: 18px; height: 18px; }
+  svg.ico-svg-lg { width: 20px; height: 20px; }
+
+  .socials { display: inline-flex; align-items: center; gap: 6px; }
+  .socials a {
+    width: 36px; height: 36px;
+    display: grid; place-items: center;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--ink-2);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .socials a:hover { background: var(--card-2); color: var(--brand); border-color: var(--brand); }
+  .socials a svg { width: 18px; height: 18px; }
+  footer .socials a { width: 36px; height: 36px; }
+</style>
+</head>
+<body>
+
+<header class="mobile-topbar">
+  <a href="/" class="mt-logo" aria-label="Brandlete — home">
+    <img src="img/brandlete-logo-light.png" alt="Brandlete" class="brand-logo-light" />
+    <img src="img/brandlete-logo-dark.png" alt="Brandlete" class="brand-logo-dark" />
+  </a>
+  <div class="mt-right">
+    <button type="button" id="theme-toggle-mobile" class="icon-btn" aria-label="Toggle dark mode">
+      <svg class="icon-dark ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-light ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.5 4.5l1.5 1.5M18 18l1.5 1.5M4.5 19.5L6 18M18 6l1.5-1.5"/></svg>
+    </button>
+    <a href="#contact" class="mt-cta">Book a Demo</a>
+    <button type="button" id="nav-toggle" class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+</header>
+<div class="nav-backdrop" id="nav-backdrop"></div>
+<div class="app">
+  <aside class="rail">
+    <a href="/" class="brand-mark" aria-label="Brandlete — back to home">
+      <img src="img/brandlete-logo-light.png" alt="Brandlete" class="brand-logo brand-logo-light" />
+      <img src="img/brandlete-logo-dark.png" alt="Brandlete" class="brand-logo brand-logo-dark" />
+    </a>
+    <div class="rail-section-label">Navigation</div>
+    <nav class="rail-nav">
+      <a href="#overview" class="active">
+        <span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg></span>
+        <span>Overview<span class="sub">The two-sided platform</span></span>
+      </a>
+      <a href="#operate">
+        <span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 10h18"/><path d="M8 2v4M16 2v4"/><path d="M8 15h3"/></svg></span>
+        <span>Operate<span class="sub">The operating system</span></span>
+      </a>
+      <a href="#develop">
+        <span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v6H4z"/><path d="M4 13h16v6H4z"/></svg></span>
+        <span>Develop<span class="sub">The development engine</span></span>
+      </a>
+      <a href="#prove">
+        <span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="2.6"/></svg></span>
+        <span>Prove<span class="sub">Outcomes you can show</span></span>
+      </a>
+      <a href="#who-for">
+        <span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.6-3.4 3.4-5.5 6.5-5.5s5.9 2.1 6.5 5.5"/><circle cx="17" cy="9" r="2.6"/><path d="M22 19c-.4-2.3-2.1-3.7-4-3.9"/></svg></span>
+        <span>Who It's For<span class="sub">Directors, coaches, families</span></span>
+      </a>
+      <a href="#power25">
+        <span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.6 5.3 5.9.9-4.3 4.2 1 5.9L12 15.5l-5.2 2.8 1-5.9L3.5 8.2l5.9-.9z"/></svg></span>
+        <span>Power 25<span class="sub">Founding partnership · 2026</span></span>
+      </a>
+      <a href="#pricing">
+        <span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 6v12"/><path d="M9 9h5a2 2 0 0 1 0 4H10a2 2 0 0 0 0 4h6"/></svg></span>
+        <span>Pricing<span class="sub">Program-first</span></span>
+      </a>
+      <a href="#team">
+        <span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.6"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg></span>
+        <span>Our Starting Lineup<span class="sub">Operators with roots in sport</span></span>
+      </a>
+      <a href="#contact">
+        <span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="M4 6l8 7 8-7"/></svg></span>
+        <span>Contact<span class="sub">Book a Demo</span></span>
+      </a>
+    </nav>
+
+    <div class="rail-foot">
+      <a class="needhelp" href="mailto:info@brandlete.com">
+        <svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4"/><circle cx="12" cy="17" r="0.8" fill="currentColor"/></svg>
+        Need help? Email us.
+      </a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="topstrip">
+      <div class="actions">
+        <a href="#power25" class="btn btn-partner">Partnership Opportunity</a>
+        <a href="#contact" class="btn btn-cyan">Book a Demo</a>
+        <button type="button" id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+          <svg class="icon-dark ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="icon-light ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.5 4.5l1.5 1.5M18 18l1.5 1.5M4.5 19.5L6 18M18 6l1.5-1.5"/></svg>
+        </button>
+      </div>
+      <div class="greet">
+        <h2>For <span id="greet-role" class="greet-role"></span><span id="greet-cursor" class="greet-cursor" aria-hidden="true"></span> serious <span class="greet-tail">about athlete development.</span></h2>
+      </div>
+    </div>
+
+    <section class="hero-card" id="overview">
+      <h1>The <span class="accent">Operating System</span> for Sports Organizations. The <span class="accent">Development Engine</span> for Athletes.</h1>
+      <p class="lede">Brandlete runs the program around your athletes and develops the athletes inside it, on one platform.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-light">Book a Demo</a>
+        <a href="#power25" class="btn ghost-on-dark">See Partnership Program</a>
+      </div>
+      <div class="hero-roles">
+        <a class="hero-role" href="#who-for"><span class="role-tag">Built for</span><span class="role-name">Coaches</span></a>
+        <a class="hero-role" href="#who-for"><span class="role-tag">Clear for</span><span class="role-name">Athletes</span></a>
+        <a class="hero-role" href="#who-for"><span class="role-tag">Visible to</span><span class="role-name">Parents</span></a>
+        <a class="hero-role" href="#who-for"><span class="role-tag">Actionable for</span><span class="role-name">Program Leaders</span></a>
+      </div>
+    </section>
+
+    <div class="cohort-strip" aria-label="Designed for organizations developing athletes">
+      <span class="cohort-label">Designed for organizations developing athletes</span>
+      <div class="cohort-bubbles">
+        <a class="cohort-mark" href="#contact">Clubs &amp; Travel Programs</a>
+        <a class="cohort-mark" href="#contact">Collegiate Programs</a>
+        <a class="cohort-mark" href="#contact">High Schools</a>
+        <a class="cohort-mark" href="#contact">Academies</a>
+        <a class="cohort-mark" href="#contact">Camps</a>
+        <a class="cohort-mark" href="#contact">Performance Specialists</a>
+      </div>
+    </div>
+
+    <section class="section" id="operate">
+      <div class="section-head">
+        <div class="left">
+          <div class="eyebrow">Operate · The operating system for your organization</div>
+          <h2>Run your entire program from one place.<button class="section-link" data-hash="operate" aria-label="Copy link to this section" title="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button></h2>
+        </div>
+      </div>
+      <p class="section-lede">Everything a sports organization needs to operate day to day, in one system. The same platform that develops your athletes runs the program around them, with communication that stays transparent and in your control.</p>
+      <div class="grid-3">
+        <div class="card">
+          <span class="badge">Operations</span>
+          <h3>Team scheduling.</h3>
+          <p class="lede">Practices, games, and events on one calendar with availability, RSVPs, and instant alerts when plans change.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Operations</span>
+          <h3>Registration.</h3>
+          <p class="lede">Season and program sign-ups with rosters, waivers, and forms in a single flow, not a stack of PDFs.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Operations</span>
+          <h3>Payments &amp; billing.</h3>
+          <p class="lede">Dues, program fees, and installment plans collected on time, without chasing spreadsheets or families.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Operations</span>
+          <h3>Tournament operations.</h3>
+          <p class="lede">Run events end to end: brackets, schedules, check-in, and results in one place instead of five tools.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Operations</span>
+          <h3>Roster &amp; team management.</h3>
+          <p class="lede">Build teams, assign staff, and manage every roster across your organization from one backend.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Trust</span>
+          <h3>Transparent communication.</h3>
+          <p class="lede">Team, group, and org-wide messaging that's archived and recoverable, with parent visibility and admin oversight where the program allows it. Each organization sets who can message whom.</p>
+        </div>
+      </div>
+    </section>
+
+    <figure class="athlete-band">
+      <img src="img/youth-club.jpg" alt="Youth club soccer players celebrating a goal at golden hour." loading="lazy" />
+      <figcaption><span class="level-name">Club &amp; travel</span><span class="level-num">Level i</span></figcaption>
+    </figure>
+
+    <section class="section" id="develop">
+      <div class="section-head">
+        <div class="left">
+          <div class="eyebrow">Develop · The development engine for athletes</div>
+          <h2>Turn athlete development into a repeatable system.<button class="section-link" data-hash="develop" aria-label="Copy link to this section" title="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button></h2>
+        </div>
+        <a href="#contact" class="right">See it live ↗</a>
+      </div>
+      <p class="section-lede">Build your development system once and scale it across every coach, team, and athlete. Repeatable Playbooks for skills, leadership, camps, tryouts, and seasons, so every athlete gets a structured experience and your program gets consistency.</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Development Systems</h3>
+          <p class="lede">Build repeatable Playbooks for teams, positions, leadership, camps, tryouts, and seasons, then reuse them across the organization.</p>
+        </div>
+        <div class="card">
+          <h3>Goals &amp; Accountability</h3>
+          <p class="lede">Turn development plans into measurable goals, tasks, milestones, and athlete action.</p>
+        </div>
+        <div class="card">
+          <h3>Coaching Feedback</h3>
+          <p class="lede">Deliver structured feedback athletes can revisit, apply, and build from over time.</p>
+        </div>
+        <div class="card">
+          <h3>Athlete &amp; Parent Visibility</h3>
+          <p class="lede">Keep development organized, transparent, and visible across athletes, coaches, and parents.</p>
+        </div>
+        <div class="card">
+          <h3>Engagement &amp; Retention</h3>
+          <p class="lede">Track engagement, development activity, coach adoption, and athletes who may need support.</p>
+        </div>
+        <div class="card">
+          <h3>AI Development Assistant</h3>
+          <p class="lede">Turn coaching conversations into plans, goals, feedback, and assignments in seconds. AI supports coaches, it doesn't replace them.</p>
+        </div>
+      </div>
+      <div class="platform-screens">
+        <div class="product-twoup">
+          <figure>
+            <div class="product-img-wrap">
+              <img src="img/product-coach.png" alt="Brandlete Coach Hub showing active development systems and at-a-glance KPIs." width="1536" height="1024" loading="lazy" />
+              <span class="pin" style="top:14%;left:8%"><i>1</i><em>Assign weekly work in seconds</em></span>
+              <span class="pin pin-left" style="top:42%;left:62%"><i>2</i><em>Every athlete's progress in view</em></span>
+              <span class="pin" style="top:78%;left:22%"><i>3</i><em>Roster-wide progress at a glance</em></span>
+            </div>
+            <figcaption><span class="surface-name">Coach Hub</span><span class="surface-tag">Coach view</span></figcaption>
+          </figure>
+          <figure>
+            <div class="product-img-wrap">
+              <img src="img/product-athlete.png" alt="Brandlete athlete dashboard showing today's focus, coach updates, and progress streak." width="1536" height="1024" loading="lazy" />
+              <span class="pin" style="top:12%;left:10%"><i>1</i><em>Today's focus, one screen</em></span>
+              <span class="pin pin-left" style="top:46%;left:64%"><i>2</i><em>Coach updates in line</em></span>
+              <span class="pin" style="top:80%;left:24%"><i>3</i><em>Progress streak stays visible</em></span>
+            </div>
+            <figcaption><span class="surface-name">Athlete Workspace</span><span class="surface-tag">Athlete view</span></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="grid-3" style="margin-top:24px;">
+        <div class="card step">
+          <div class="num"><span>i.</span> Step one</div>
+          <h3>Build your development system.</h3>
+          <p class="lede">Create Playbooks for skills, leadership, culture, camps, tryouts, and season development.</p>
+        </div>
+        <div class="card step">
+          <div class="num"><span>ii.</span> Step two</div>
+          <h3>Connect your team.</h3>
+          <p class="lede">Bring coaches, athletes, parents, and administrators into one shared platform.</p>
+        </div>
+        <div class="card step">
+          <div class="num"><span>iii.</span> Step three</div>
+          <h3>Assign development.</h3>
+          <p class="lede">Turn Playbooks into goals, tasks, milestones, and action plans athletes can follow.</p>
+        </div>
+        <div class="card step">
+          <div class="num"><span>iv.</span> Step four</div>
+          <h3>Coach and communicate.</h3>
+          <p class="lede">Provide feedback, share updates, and keep everyone aligned around athlete growth.</p>
+        </div>
+        <div class="card step">
+          <div class="num"><span>v.</span> Step five</div>
+          <h3>Measure growth.</h3>
+          <p class="lede">Track engagement, progress, and development across your entire program.</p>
+        </div>
+      </div>
+    </section>
+
+    <figure class="athlete-band">
+      <img src="img/youth-highschool.jpg" alt="High school varsity basketball team preparing in the locker room." loading="lazy" />
+      <figcaption><span class="level-name">High school</span><span class="level-num">Level ii</span></figcaption>
+    </figure>
+
+    <section class="section" id="prove">
+      <div class="section-head">
+        <div class="left">
+          <div class="eyebrow">Prove · Outcomes you can show</div>
+          <h2>See development happening, and prove it to your board.<button class="section-link" data-hash="prove" aria-label="Copy link to this section" title="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button></h2>
+        </div>
+      </div>
+      <p class="section-lede">Directors get visibility into coach activity, athlete engagement, development progress, and retention risk, early enough to act. Traditional sports tech runs the logistics and stops there. Brandlete does that too, then proves the athlete is moving forward.</p>
+      <div class="grid-3">
+        <div class="card">
+          <span class="badge">Signal</span>
+          <h3>Coach activity.</h3>
+          <p class="lede">See which coaches are assigning work, sending feedback, and showing up consistently.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Signal</span>
+          <h3>Athlete engagement.</h3>
+          <p class="lede">Track who's logging in, completing tasks, and engaging with development week over week.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Signal</span>
+          <h3>Development progress.</h3>
+          <p class="lede">Watch goals close, milestones hit, and Playbook progress across teams and age groups.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Signal</span>
+          <h3>Parent visibility.</h3>
+          <p class="lede">Confirm parents are seeing the structure, communication, and progress behind their athlete's experience.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Signal</span>
+          <h3>Needs attention.</h3>
+          <p class="lede">Surface athletes who may need follow-up: missed check-ins, falling engagement, or quiet weeks.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Signal</span>
+          <h3>Retention signals.</h3>
+          <p class="lede">See where retention risk is forming early enough to act, not after the season ends.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="who-for">
+      <div class="section-head">
+        <div class="left">
+          <div class="eyebrow">Who it's for</div>
+          <h2>One platform. Every stakeholder in your program.<button class="section-link" data-hash="who-for" aria-label="Copy link to this section" title="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button></h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <span class="badge">Athletic Directors</span>
+          <h3>Athletic Directors</h3>
+          <p class="lede">Program-wide visibility into development, coach engagement, and athlete progress.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Club Directors</span>
+          <h3>Club Directors</h3>
+          <p class="lede">Consistency across teams, better retention, and stronger parent trust as you scale.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Coaches</span>
+          <h3>Coaches</h3>
+          <p class="lede">Assign development, deliver feedback, and keep athletes accountable with less admin.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Athletes</span>
+          <h3>Athletes</h3>
+          <p class="lede">Know what to work on, track progress, and take ownership of your development.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Parents</span>
+          <h3>Parents</h3>
+          <p class="lede">Visibility into goals, feedback, and the progress behind your athlete's growth.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Administrators</span>
+          <h3>Administrators</h3>
+          <p class="lede">Measure engagement and support coaches across every team and athlete.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="power25">
+      <div class="power25">
+        <div class="eyebrow">Power 25 · Founding partnership program</div>
+        <h2>Join the <span class="accent">Power 25</span> Partnership Program.<button class="section-link" data-hash="power25" aria-label="Copy link to this section" title="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button></h2>
+        <p class="lede">We are selecting 25 forward-thinking organizations to help shape the future of athlete development infrastructure.</p>
+
+        <div class="power25-stats">
+          <div class="power25-stat">
+            <div class="num">25</div>
+            <div class="label">Founding partners</div>
+          </div>
+          <div class="power25-stat">
+            <div class="num white">6 mo</div>
+            <div class="label">Test period</div>
+          </div>
+          <p class="power25-pricing-note"><a href="#contact">Contact us for customized pricing.</a></p>
+        </div>
+
+        <div class="power25-who">
+          <h3>Who this is for</h3>
+          <ul>
+            <li><a href="#contact">Athletic departments &amp; schools</a></li>
+            <li><a href="#contact">Club &amp; travel programs</a></li>
+            <li><a href="#contact">Academies &amp; camps</a></li>
+            <li><a href="#contact">Colleges &amp; universities</a></li>
+          </ul>
+        </div>
+
+        <div class="power25-benefits">
+          <div class="power25-benefit">
+            <h4>Founder-led onboarding</h4>
+            <p>Direct setup with the founding team to get your first Playbook live fast.</p>
+          </div>
+          <div class="power25-benefit">
+            <h4>Priority product access</h4>
+            <p>First look at new features, beta surfaces, and platform updates before general release.</p>
+          </div>
+          <div class="power25-benefit">
+            <h4>Development Playbook setup</h4>
+            <p>We build your initial Playbooks alongside your coaches so your curriculum lands on day one.</p>
+          </div>
+          <div class="power25-benefit">
+            <h4>Quarterly strategy session</h4>
+            <p>Sit down with our team every quarter to align on growth, retention, and program goals.</p>
+          </div>
+          <div class="power25-benefit">
+            <h4>Founding partner recognition</h4>
+            <p>Public recognition as a Power 25 founding partner across our launch assets.</p>
+          </div>
+          <div class="power25-benefit">
+            <h4>Direct product feedback loop</h4>
+            <p>Your feedback shapes what we build next. Founding partners get a real seat at the table.</p>
+          </div>
+        </div>
+
+        <div class="power25-cta">
+          <p class="fineprint">Only 25 organizations will be selected for the first launch cohort.</p>
+          <div class="ctas">
+            <a href="https://www.linkedin.com/in/johnosberg/" target="_blank" rel="noopener" class="btn ghost-on-dark">Connect with John on LinkedIn</a>
+            <a href="#contact" class="btn btn-light">Apply for Power 25</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="section-head">
+        <div class="left">
+          <div class="eyebrow">Pricing</div>
+          <h2>Simple program pricing for serious athlete development.<button class="section-link" data-hash="pricing" aria-label="Copy link to this section" title="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button></h2>
+        </div>
+        <a href="#contact" class="right">Pricing built for growing programs ↗</a>
+      </div>
+      <p class="section-lede">Brandlete is built for schools, clubs, academies, and athletic organizations that want a structured development system across coaches, athletes, and families.</p>
+      <div class="program-card">
+        <span class="price-pill">For programs</span>
+        <h3>Program License</h3>
+        <p class="lede" style="margin:0;">Per-athlete pricing that grows with your team and program. Add athletes as your roster scales, with coaches, parents, and administrators always included, so your entire program runs on one development system.</p>
+        <ul class="list">
+          <li>Unlimited coaches and parent accounts included</li>
+          <li>Development playbooks, goals, and feedback</li>
+          <li>Coach, athlete, parent, and admin portals</li>
+          <li>Organization-wide reporting and AI tools</li>
+          <li>Dedicated onboarding and support</li>
+        </ul>
+        <a href="#contact" class="btn btn-light" style="align-self:flex-start;margin-top:4px;">Talk to us about program pricing</a>
+      </div>
+
+    </section>
+
+    <section class="section" id="team">
+      <div class="section-head">
+        <div class="left">
+          <div class="eyebrow">Our Starting Lineup</div>
+          <h2>Built by operators with roots in sport.<button class="section-link" data-hash="team" aria-label="Copy link to this section" title="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button></h2>
+        </div>
+        <a href="mailto:info@brandlete.com" target="_blank" rel="noopener" class="right">Get in touch ↗</a>
+      </div>
+      <div class="team-grid">
+        <div class="team-col">
+          <div class="team-portrait"><img src="img/team-judd.jpg" alt="Judd Simon" loading="lazy" /></div>
+          <div class="role-row"><span class="role-tag">Founder &amp; CEO</span></div>
+          <h3>Judd Simon</h3>
+          <p>Building the operating system for athlete development.</p>
+          <a class="team-link" href="https://www.linkedin.com/in/juddsimon" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+        <div class="team-col">
+          <div class="team-portrait"><img src="img/team-john.jpg" alt="John Osberg" loading="lazy" /></div>
+          <div class="role-row"><span class="role-tag">VP, Partnerships</span></div>
+          <h3>John Osberg</h3>
+          <p>Leads partnerships and the go-to-market motion across clubs, high schools, and college programs.</p>
+          <a class="team-link" href="https://www.linkedin.com/in/johnosberg" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+        <div class="team-col">
+          <div class="team-portrait"><img src="img/team-david.jpg" alt="David Taylor" loading="lazy" /></div>
+          <div class="role-row"><span class="role-tag">CTO</span></div>
+          <h3>David Taylor</h3>
+          <p>Builds the platform end to end, from roster import to the athlete development dashboard.</p>
+          <a class="team-link" href="https://www.linkedin.com/in/taylordavidduayne" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+        <div class="team-col">
+          <div class="team-portrait"><img src="img/team-brian.jpg" alt="Brian Lehman" loading="lazy" /></div>
+          <div class="role-row"><span class="role-tag">VP, Business Development</span></div>
+          <h3>Brian Lehman</h3>
+          <p>Drives revenue and new program partnerships, with a focus on parent and athletic-director relationships.</p>
+          <a class="team-link" href="https://www.linkedin.com/in/brianlehman" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <figure class="athlete-band">
+      <img src="img/youth-college.jpg" alt="College lacrosse player jogging off the field at dusk." loading="lazy" />
+      <figcaption><span class="level-name">College</span><span class="level-num">Level iii</span></figcaption>
+    </figure>
+
+    <section class="section" id="contact">
+      <div class="section-head">
+        <div class="left">
+          <div class="eyebrow">Contact</div>
+          <h2>Ready to see Brandlete in action?<button class="section-link" data-hash="contact" aria-label="Copy link to this section" title="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button></h2>
+        </div>
+        <div class="right contact-cta">
+          <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=info@brandlete.com" target="_blank" rel="noopener">info@brandlete.com ↗</a>
+          <p class="cta-note"><a href="mailto:info@brandlete.com?subject=Brandlete%20demo%20request">or open in your default mail app</a></p>
+        </div>
+      </div>
+      <div class="schedule-block" id="schedule">
+        <h3>Pick a 30-minute slot.</h3>
+        <p class="schedule-lede">Walk through Brandlete with John, VP Partnerships. Pick a time below and you'll get a calendar invite right away.</p>
+        <div class="schedule-embed">
+          <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0bFqo43JGcdk9kShp6SSL5J4ZZyWsuaawJnrFhsmzZTkZzmtSBEq3-DyzO9VPWQE8jKZ7KXtvN?gv=true" title="Schedule a Brandlete demo with John Osberg" loading="lazy"></iframe>
+        </div>
+        <p class="schedule-fallback">Trouble loading the calendar? <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0bFqo43JGcdk9kShp6SSL5J4ZZyWsuaawJnrFhsmzZTkZzmtSBEq3-DyzO9VPWQE8jKZ7KXtvN" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+      </div>
+      <div class="contact-card">
+        <div class="lead">
+          <img class="shoe" src="img/brandlete-shoe.png" alt="" />
+          <h3>Have a question first?</h3>
+          <p>Send us a note and we'll get back to you. For Power 25, pricing, press, or anything that isn't a demo request, drop the details and we'll route it to the right person.</p>
+          <p class="lead-form-hint">Or email <a href="mailto:info@brandlete.com">info@brandlete.com</a> directly.</p>
+        </div>
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="contact-field">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="Jane Smith" autocomplete="name" required />
+          </div>
+          <div class="contact-row">
+            <div class="contact-field">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+            <div class="contact-field">
+              <label for="contact-role">I am a:</label>
+              <select id="contact-role" name="role" required>
+                <option value="" disabled selected>Select…</option>
+                <option>Athletic Director</option>
+                <option>Club Director</option>
+                <option>Coach</option>
+                <option>Academy Owner</option>
+                <option>Athlete</option>
+                <option>Parent</option>
+                <option>Partner / Investor</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="contact-field">
+            <label for="contact-interest">What are you interested in?</label>
+            <select id="contact-interest" name="interest" required>
+              <option value="" disabled selected>Select…</option>
+              <option>Bringing Brandlete to my program</option>
+              <option>Power 25 partnership</option>
+              <option>Press or investor inquiry</option>
+              <option>Just curious</option>
+            </select>
+          </div>
+          <div class="contact-field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" placeholder="Tell us a little about your program or what you're hoping to solve." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-cyan">Send message</button>
+          <div class="contact-status" id="contact-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <div class="foot-mark">
+            <img src="img/brandlete-logo-light.png" alt="Brandlete" class="foot-logo-light" />
+            <img src="img/brandlete-logo-dark.png" alt="Brandlete" class="foot-logo-dark" />
+          </div>
+          <p class="foot-tag">Athlete development, built around the work.</p>
+          <a class="foot-contact" href="mailto:info@brandlete.com">info@brandlete.com</a>
+        </div>
+        <nav class="foot-nav" aria-label="Footer">
+          <div>
+            <h5>Platform</h5>
+            <ul>
+              <li><a href="#operate">Operate</a></li>
+              <li><a href="#develop">Develop</a></li>
+              <li><a href="#prove">Prove</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Company</h5>
+            <ul>
+              <li><a href="#team">Our Starting Lineup</a></li>
+              <li><a href="#power25">Power 25</a></li>
+              <li><a href="#who-for">Who It's For</a></li>
+              <li><a href="https://brandlete.com">brandlete.com</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="foot-connect">
+          <h5>Connect</h5>
+          <a href="#contact" class="foot-cta">Book a Demo</a>
+          <span class="socials" aria-label="Brandlete on social">
+            <a href="https://www.linkedin.com/company/brandlete" target="_blank" rel="noopener" aria-label="Brandlete on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4v11H3v-11zm7 0h3.8v1.5h.05c.53-1 1.83-2 3.77-2 4.03 0 4.78 2.65 4.78 6.1V20.5h-4v-4.9c0-1.17-.02-2.68-1.63-2.68-1.64 0-1.9 1.28-1.9 2.6v4.98h-4v-11z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/joinbrandlete" target="_blank" rel="noopener" aria-label="Brandlete on Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.facebook.com/brandlete" target="_blank" rel="noopener" aria-label="Brandlete on Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.7c0-.87.24-1.46 1.5-1.46h1.6V4.6c-.28-.04-1.24-.12-2.36-.12-2.34 0-3.94 1.43-3.94 4.05v2.46H7.8v3h2.5V21h3.2z"/></svg>
+            </a>
+            <a href="https://x.com/brandlete" target="_blank" rel="noopener" aria-label="Brandlete on X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="foot-legal-strip">
+        <div>© 2026 Brandlete, Inc.</div>
+        <div class="foot-legal">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('nav-toggle');
+    var backdrop = document.getElementById('nav-backdrop');
+    var rail = document.querySelector('.rail');
+    if (!toggle || !backdrop || !rail) return;
+    function setOpen(open) {
+      document.body.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function () {
+      setOpen(!document.body.classList.contains('nav-open'));
+    });
+    backdrop.addEventListener('click', function () { setOpen(false); });
+    rail.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+  })();
+</script>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')].filter(Boolean);
+    if (!btns.length) return;
+    function apply(next) {
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('brandlete-theme', next); } catch (e) {}
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false'); });
+    }
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+    });
+
+    var greetRole = document.getElementById('greet-role');
+    var greetH2 = greetRole ? greetRole.parentElement : null;
+    function fitGreet() {
+      if (!greetH2) return;
+      var parent = greetH2.parentElement;
+      var maxW = parent ? parent.clientWidth : 0;
+      if (!maxW) return;
+      greetH2.style.fontSize = '';
+      var isMobile = window.matchMedia('(max-width: 720px)').matches;
+      var base = parseFloat(getComputedStyle(greetH2).fontSize) || 16;
+      var ceiling = isMobile ? base : 48;
+      var floor = isMobile ? 14 : 11;
+      var size = Math.min(ceiling, Math.max(base, isMobile ? 14 : 24));
+      greetH2.style.fontSize = size + 'px';
+      var guard = 80;
+      while (greetH2.scrollWidth > maxW && size > floor && guard-- > 0) {
+        size -= 0.5;
+        greetH2.style.fontSize = size + 'px';
+      }
+    }
+    if (greetRole) {
+      var roles = ['Coaches', 'Directors', 'Departments', 'Programs', 'Academies', 'Camps', 'Athletes', 'Parents'];
+      var longest = roles.reduce(function (a, b) { return a.length >= b.length ? a : b; });
+      function lockToLongest() {
+        var prev = greetRole.textContent;
+        greetRole.textContent = longest;
+        fitGreet();
+        greetRole.textContent = prev;
+      }
+      var idx = 0;
+      greetRole.textContent = roles[0];
+      lockToLongest();
+      window.addEventListener('resize', lockToLongest);
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var TYPE_MS = 70;
+        var ERASE_MS = 40;
+        var HOLD_MS = 2200;
+        var pos = roles[0].length;
+        function erase() {
+          if (pos > 0) {
+            pos--;
+            greetRole.textContent = roles[idx].slice(0, pos);
+            setTimeout(erase, ERASE_MS);
+          } else {
+            idx = (idx + 1) % roles.length;
+            setTimeout(type, ERASE_MS);
+          }
+        }
+        function type() {
+          var target = roles[idx];
+          if (pos < target.length) {
+            pos++;
+            greetRole.textContent = target.slice(0, pos);
+            setTimeout(type, TYPE_MS);
+          } else {
+            setTimeout(erase, HOLD_MS);
+          }
+        }
+        setTimeout(erase, HOLD_MS);
+      }
+    }
+
+    var sections = ['overview','operate','develop','prove','who-for','power25','pricing','team','contact'];
+    var links = sections.reduce(function (acc, id) {
+      acc[id] = document.querySelector('.rail-nav a[href="#' + id + '"]');
+      return acc;
+    }, {});
+    function onScroll() {
+      var y = window.scrollY + window.innerHeight * 0.35;
+      var current = sections[0];
+      sections.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el && el.offsetTop <= y) current = id;
+      });
+      Object.keys(links).forEach(function (k) { if (links[k]) links[k].classList.toggle('active', k === current); });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    var billingButtons = document.querySelectorAll('.billing-opt');
+    var priceAmount = document.querySelector('.price-amount');
+    var pricePeriod = document.querySelector('.price-period');
+    var priceSub = document.querySelector('.price-sub');
+    var prices = {
+      monthly: { amount: '$14.99', period: 'per athlete / month', note: 'Billed monthly. Cancel anytime. No per-coach or per-parent fees.' },
+      yearly:  { amount: '$149.99', period: 'per athlete / year',  note: 'Billed yearly. Save about 17% versus monthly. Coaches and parents always free.' }
+    };
+    billingButtons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        billingButtons.forEach(function (other) {
+          other.classList.toggle('active', other === b);
+          other.setAttribute('aria-selected', other === b ? 'true' : 'false');
+        });
+        var p = prices[b.getAttribute('data-period')] || prices.monthly;
+        if (priceAmount) priceAmount.textContent = p.amount;
+        if (pricePeriod) pricePeriod.textContent = p.period;
+        if (priceSub) priceSub.textContent = p.note;
+      });
+    });
+
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('contact-status');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        var name = (data.get('name') || '').toString().trim();
+        var email = (data.get('email') || '').toString().trim();
+        var role = (data.get('role') || '').toString().trim();
+        var interest = (data.get('interest') || '').toString().trim();
+        var message = (data.get('message') || '').toString().trim();
+        if (!name || !email || !role || !interest || !message) {
+          status.textContent = 'Please fill in every field, then send.';
+          status.classList.add('error');
+          return;
+        }
+        status.classList.remove('error');
+        var subject = 'Brandlete contact — ' + name + ' (' + role + ')';
+        var body = [
+          'Name: ' + name,
+          'Email: ' + email,
+          'I am a: ' + role,
+          'Interested in: ' + interest,
+          '',
+          message
+        ].join('\n');
+        var href = 'mailto:info@brandlete.com,john@brandlete.com,brian@brandlete.com'
+          + '?subject=' + encodeURIComponent(subject)
+          + '&body=' + encodeURIComponent(body);
+        status.textContent = 'Opening your email app. If nothing opens, write info@brandlete.com directly.';
+        window.location.href = href;
+      });
+    }
+  })();
+
+  (function () {
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll('.rail-nav a[href^="#"]'));
+    if (!navLinks.length || !('IntersectionObserver' in window)) return;
+
+    var linkBySection = {};
+    var sections = [];
+    navLinks.forEach(function (link) {
+      var id = link.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if (el) { linkBySection[id] = link; sections.push(el); }
+    });
+
+    function setActive(id) {
+      navLinks.forEach(function (l) { l.classList.remove('active'); });
+      var hit = linkBySection[id];
+      if (hit) hit.classList.add('active');
+    }
+
+    var visible = {};
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) visible[e.target.id] = e.intersectionRatio;
+        else delete visible[e.target.id];
+      });
+      var bestId = null, bestTop = Infinity;
+      sections.forEach(function (s) {
+        if (visible[s.id] != null) {
+          var top = s.getBoundingClientRect().top;
+          if (top < bestTop) { bestTop = top; bestId = s.id; }
+        }
+      });
+      if (bestId) setActive(bestId);
+    }, { rootMargin: '-30% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
+
+    sections.forEach(function (s) { io.observe(s); });
+
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        setActive(link.getAttribute('href').slice(1));
+      });
+    });
+  })();
+
+  (function () {
+    var pins = document.querySelectorAll('.product-img-wrap .pin');
+    if (!pins.length) return;
+    function closeAll(except) {
+      pins.forEach(function (p) { if (p !== except) p.classList.remove('active'); });
+    }
+    pins.forEach(function (pin) {
+      pin.setAttribute('role', 'button');
+      pin.setAttribute('tabindex', '0');
+      var label = pin.querySelector('em');
+      if (label) pin.setAttribute('aria-label', label.textContent);
+      pin.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var wasActive = pin.classList.contains('active');
+        closeAll(pin);
+        pin.classList.toggle('active', !wasActive);
+      });
+      pin.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          pin.click();
+        } else if (e.key === 'Escape') {
+          pin.classList.remove('active');
+        }
+      });
+    });
+    document.addEventListener('click', function () { closeAll(null); });
+  })();
+
+  // Section anchor copy-link buttons
+  document.querySelectorAll('.section-link').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var hash = btn.dataset.hash;
+      var url = location.origin + location.pathname + '#' + hash;
+      navigator.clipboard.writeText(url).then(function() {
+        btn.setAttribute('data-copied', '');
+        setTimeout(function() { btn.removeAttribute('data-copied'); }, 1800);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
